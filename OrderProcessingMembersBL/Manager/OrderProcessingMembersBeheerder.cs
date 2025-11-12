@@ -56,5 +56,7 @@ namespace OrderProcessingMembersBL.Manager
 
             return _repo.GetOrdersByEvent();
         }
+
+       
     }
 }
