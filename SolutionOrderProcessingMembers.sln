@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProcessingMembersUtils
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProcessingMemberDL_File", "OrderProcessingMemberDL_File\OrderProcessingMemberDL_File.csproj", "{222E95EB-155D-41D7-8A42-44185B8A7673}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProcessingMembersUI_2", "OrderProcessingMembersUI_2\OrderProcessingMembersUI_2.csproj", "{AC27D31F-AAB7-4A5C-ABB4-B075C3921C02}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{222E95EB-155D-41D7-8A42-44185B8A7673}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{222E95EB-155D-41D7-8A42-44185B8A7673}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{222E95EB-155D-41D7-8A42-44185B8A7673}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC27D31F-AAB7-4A5C-ABB4-B075C3921C02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC27D31F-AAB7-4A5C-ABB4-B075C3921C02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC27D31F-AAB7-4A5C-ABB4-B075C3921C02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC27D31F-AAB7-4A5C-ABB4-B075C3921C02}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
