@@ -2,6 +2,8 @@
 using OrderProcessingMembersBL.Interfaces;
 using OrderProcessingMembersBL.Manager;
 using OrderProcessingMembersBL.Models;
+using OrderProcessingMembersBL.Models.Calculators;
+using OrderProcessingMembersBL.Models.Deliveries;
 using OrderProcessingMembersBL.Models.Status;
 using System.Net;
 using System.Xml.Linq;
@@ -14,7 +16,7 @@ namespace OrderProcessingMemberDL_File
 
         private Dictionary<string, Member> leden;
         private Dictionary<int, Event> events;
-        private OrderProcessingMembersBeheerder beheerder;
+        
         private List<StandardOrder> orders;
         // string = key email voor methode memberbyemail
 
@@ -60,11 +62,11 @@ namespace OrderProcessingMemberDL_File
             event5.Id = eventId;
             eventId++;
 
-            StandardOrder o1 = beheerder.GetOrder(member, event1, 1);
-            StandardOrder o2 = beheerder.GetOrder(member2, event1, 1);
-            StandardOrder o3 = beheerder.GetOrder(member3, event1, 1);
-            StandardOrder o4 = beheerder.GetOrder(member4, event2, 1);
-            StandardOrder o5 = beheerder.GetOrder(member5, event2, 1);
+            GoldOrder o1 = new(event1, member, 1, new ExpressDelivery(), new GoldCalculator());
+            GoldOrder o2 = new(event1, member2, 1, new ExpressDelivery(), new GoldCalculator());
+            GoldOrder o3 = new(event1, member3, 1, new ExpressDelivery(), new GoldCalculator());
+            GoldOrder o4 = new(event2, member4, 1, new ExpressDelivery(), new GoldCalculator());
+            GoldOrder o5 = new(event2, member5, 1, new ExpressDelivery(), new GoldCalculator());
 
             orders.Add(o1);
             orders.Add(o2);
