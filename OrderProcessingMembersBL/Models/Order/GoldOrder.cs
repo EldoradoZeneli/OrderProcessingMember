@@ -11,36 +11,31 @@ namespace OrderProcessingMembersBL.Models.Status
 {
 
     // IStatus is used to group every type of status, the Interface itself doesn't contain any logic
-    public class GoldOrder: StandardOrder, IWelcomingPackage, INameTag, IDinner, ITaxi
+    public class GoldOrder: StandardOrder, INameTag, IWelcomingPackage, IDinner, ITaxi
     {
-        public override Levering TypeLevering()
+        public GoldOrder(Event @event, Member member, int nrOfTickets, IDelivery delivery, IPriceCalculator calculator)
+            : base(@event, member, nrOfTickets, delivery, calculator)
         {
-            return Levering.Express;
-        }
-
-        public override decimal BerekenKost(decimal kost)
-        {
-            return kost * 3;
-        }
-
-        public string Welkomstpakket()
-        {
-            return "Welkomstpakket!";
-        }
-
-        public string Naamplaat(string naam)
-        {
-            return "Naamplaat: " + naam;
-        }
-
-        public string Avondmaal()
-        {
-            return "Avondmaal!";
         }
 
         public string Afhaalservice()
         {
-            return "Afhaalservice!";
+            throw new NotImplementedException();
+        }
+
+        public string Avondmaal()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Naamplaat(string naam)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string Welkomstpakket()
+        {
+            throw new NotImplementedException();
         }
     }
 }

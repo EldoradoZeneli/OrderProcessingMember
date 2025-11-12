@@ -10,6 +10,6 @@ namespace BL.Interfaces
 {
     public interface IDelivery
     {
-        Levering TypeLevering();
+        string SendOrder();
     }
 }

@@ -10,5 +10,7 @@ namespace OrderProcessingMembersBL.Interfaces
     public interface IOrderManagerRepository
     {
         public List<Member> GeefLeden();
+        public Member GetMemberByEmail(string email);
+        public List<Event> GetEventList();
     }
 }

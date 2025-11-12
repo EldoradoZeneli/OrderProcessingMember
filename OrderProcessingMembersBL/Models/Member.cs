@@ -11,16 +11,17 @@ namespace OrderProcessingMembersBL.Models
 {
     public class Member
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public EStatus Status { get; set; }
-        public Member(int id, string name, string email, EStatus status)
+        public Address Address { get; set; }
+        public Member(string name, string email, EStatus status, Address address)
         {
-            Id = id;
             Name = name;
             Email = email;
             Status = status;
+            Address = address;
         }
 
         //public override string ToString()

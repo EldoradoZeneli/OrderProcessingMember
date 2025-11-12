@@ -1,4 +1,5 @@
-﻿using OrderProcessingMembersBL.Interfaces;
+﻿using OrderProcessingMembersBL.Enums;
+using OrderProcessingMembersBL.Interfaces;
 using OrderProcessingMembersBL.Models;
 using OrderProcessingMembersBL.Models.Status;
 
@@ -15,20 +16,11 @@ namespace OrderProcessingMemberDL_File
 
             leden = new();
 
-            // This is mock data, only used to simulate the application
-            var adres = new Adres("x", "x", "x", "x", "x");
-
-            leden.Add(lidID, new Member(lidID, "Gebruiker1", "mail1@outlook.com", adres, new StandardOrder()));
-            lidID++;
-
-            leden.Add(lidID, new Member(lidID, "Gebruiker2", "mail2@outlook.com", adres, new BronzeOrder()));
-            lidID++;
-
-            leden.Add(lidID, new Member(lidID, "Gebruiker3", "mail3@outlook.com", adres, new SilverOrder()));
-            lidID++;
-
-            leden.Add(lidID, new Member(lidID, "Gebruiker4", "mail4@outlook.com", adres, new GoldOrder()));
-            lidID++;
+            Member member = new Member("Lucas", "lucas@school.be", EStatus.Gold, new Address("x", "x", "x", 1));
+            Member member2 = new Member("Eldorado", "eldorado@school.be", EStatus.Gold, new Address("x", "x", "x", 1));
+            Member member3 = new Member("Qwertygebruiker", "qwerty@school.be", EStatus.Gold, new Address("x", "x", "x", 1));
+            Member member4 = new Member("Kelly", "Kelly@school.be", EStatus.Gold, new Address("x", "x", "x", 1));
+            Member member5 = new Member("x", "x@school.be", EStatus.Gold, new Address("x", "x", "x", 1));
         }
 
         public List<Member> GeefLeden()
@@ -36,5 +28,14 @@ namespace OrderProcessingMemberDL_File
             return leden.Values.ToList();
         }
 
+        public List<Event> GetEventList()
+        {
+            return null;
+        }
+
+        public Member GetMemberByEmail(string email)
+        {
+            return null;
+        }
     }
 }
