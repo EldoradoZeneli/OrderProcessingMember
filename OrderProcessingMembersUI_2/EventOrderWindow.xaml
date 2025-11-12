@@ -1,0 +1,27 @@
+﻿<Window x:Class="OrderProcessingMembersUI_2.EventOrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OrderProcessingMembersUI_2"
+        mc:Ignorable="d"
+        Title="EventOrderWindow" Height="150" Width="500">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Event options: "></TextBlock>
+        <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" Name="ComboBox_EventList" ></ComboBox>
+        <TextBox Grid.Row="0" Grid.Column="2" Text="Enter amount of tickets" Name="TextBox_TicketAmount" Margin="5"></TextBox>
+        <Button Grid.Row="1" Grid.ColumnSpan="3" Content="Order" Margin="5" Click="ButtonClick_Order"/>
+ 
+    </Grid>
+</Window>
