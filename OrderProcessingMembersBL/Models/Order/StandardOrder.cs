@@ -13,12 +13,12 @@ namespace OrderProcessingMembersBL.Models.Status
     
     public class StandardOrder
     {
-        private string _benefits;
+        private List<string> _benefits;
         public int? Id { get; set; }
         public Event Event { get; set; }
         public Member Member { get; set; }
         public int NrOfTickets { get; set; }
-        //public IReadOnlyList<string> Benefits => _benefits;
+        public IReadOnlyList<string> Benefits => _benefits;
         public IDelivery Delivery { get; set; }
         public IPriceCalculator Calculator { get; set; }
 
