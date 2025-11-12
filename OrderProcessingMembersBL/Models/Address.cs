@@ -20,10 +20,11 @@ namespace OrderProcessingMembersBL.Models
             HouseNr = houseNr;
             Postcode = postcode;
         }
-        //public override string ToString()
-        //{
-        //    return $"{street} {houseNr}, {city} {Postcode}";
-        //}
+
+        public override string ToString()
+        {
+            return $"{Street} {HouseNr}, {City} {Postcode}";
+        }
     }
 
 }

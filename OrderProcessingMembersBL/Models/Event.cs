@@ -29,8 +29,8 @@ public class Event
         Address = address;
     }
 
-    public override string ToString()
+    public override string ToString()   
     {
-        return $"{Name} | {Date} | {TicketPriceEur} | {Address}";
+        return $"{Name} | {Date.ToShortDateString()} | {TicketPriceEur} Euro | {Address}";
     }
 }
