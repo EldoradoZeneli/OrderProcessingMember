@@ -25,6 +25,7 @@ namespace OrderProcessingMemberDL_File
 
             leden = new();
             events = new Dictionary<int, Event>();
+            orders = new();
             int eventId = 1;
             Address fakeadress = new Address("x", "x", "x", 1);
 
