@@ -12,6 +12,7 @@ using OrderProcessingMembersBL.Enums;
 using OrderProcessingMembersBL.Manager;
 using OrderProcessingMembersBL.Models;
 using OrderProcessingMembersUI_2;
+using OrderProcessingMembersUtils;
 
 namespace MainOrderProcessing
 {
@@ -20,11 +21,10 @@ namespace MainOrderProcessing
     /// </summary>
     public partial class MainWindow : Window
     {
-        private OrderProcessingMembersBeheerder _manager;
-        public MainWindow(OrderProcessingMembersBeheerder manager)
+        private OrderProcessingMembersBeheerder _manager = new OrderProcessingMembersBeheerder(OrderProcessingMembersFactory.GetLidRepositoryMemory());
+        public MainWindow()
         {
-            InitializeComponent();  
-            _manager = manager;
+            InitializeComponent();              
         }
 
         private void Click_LoginMember(object sender, RoutedEventArgs e)

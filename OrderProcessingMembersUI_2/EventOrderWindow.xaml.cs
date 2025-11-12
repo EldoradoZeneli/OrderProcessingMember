@@ -24,6 +24,7 @@ namespace OrderProcessingMembersUI_2
     {
         private Member _member;
         private OrderProcessingMembersBeheerder _manager;
+        private List<Event> _events;
 
         public EventOrderWindow(Member member, OrderProcessingMembersBeheerder manager)
         {
@@ -32,7 +33,7 @@ namespace OrderProcessingMembersUI_2
             _manager = manager;
             _member = member;
 
-            List<Event> events = manager.GetEventList();
+            List<Event> events = new List<Event>(manager.GetEventList());       
             ComboBox_EventList.ItemsSource = events;
 
         }
