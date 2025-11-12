@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
 
         <TextBox Grid.Row="0" Grid.Column="0" Text="List special benefits" HorizontalAlignment="Center" Margin="5"></TextBox>
-        <ListBox Grid.Row="1" Grid.Column="0" Margin="5" SelectionMode="Single"></ListBox> 
+        <DataGrid Grid.Row="1" Grid.Column="0" Margin="5" SelectionMode="Single" Name="DataGrid_Benefits"></DataGrid> 
         
         
     </Grid>
