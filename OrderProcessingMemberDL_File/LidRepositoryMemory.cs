@@ -7,7 +7,7 @@ namespace OrderProcessingMemberDL_File
     public class LidRepositoryMemory : IOrderManagerRepository
     {
 
-        private Dictionary<int, Member> leden;
+        private Dictionary<int, Lid> leden;
         private int lidID = 1;
 
         public LidRepositoryMemory()
@@ -31,7 +31,7 @@ namespace OrderProcessingMemberDL_File
             lidID++;
         }
 
-        public List<Member> GeefLeden()
+        public List<Lid> GeefLeden()
         {
             return leden.Values.ToList();
         }
