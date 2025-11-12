@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using OrderProcessingMembersBL.Enums;
+using OrderProcessingMembersBL.Manager;
 using OrderProcessingMembersBL.Models;
 using OrderProcessingMembersBL.Models.Calculators;
 using OrderProcessingMembersBL.Models.Deliveries;
@@ -25,35 +26,38 @@ namespace OrderProcessingMembersUI_2
     public partial class AdminWindow : Window
     {
 
-        Dictionary<Event, List<StandardOrder>> benefits = new Dictionary<Event, List<StandardOrder>>();
-        List<StandardOrder> orders = new List<StandardOrder>();
+        private OrderProcessingMembersBeheerder _manager;
+        Dictionary<Event, List<StandardOrder>> dictBenefits;
+        // List<StandardOrder> orders = new List<StandardOrder>();
 
-        public AdminWindow()
+        public AdminWindow(OrderProcessingMembersBeheerder manager)
         {
             InitializeComponent();
 
-            Address address = new Address("Werchter", "Straat", "25", 2000);
-            Address address1 = new Address("Gent", "Straat", "12", 9000);
-            Event ev = new Event("Rock Werchter", new DateTime(26, 07, 14), 140.50, address);
-            Member member = new Member("Lucas", "Email", EStatus.Gold, address1);
-            List<string> benefits = new List<string>() { "nametag", "taxi", "dinner"};
+            _manager = manager;
+            dictBenefits = new Dictionary<Event, List<StandardOrder>>(manager.GetOrdersByEvent());
+
+
+            //Address address = new Address("Werchter", "Straat", "25", 2000);
+            //Address address1 = new Address("Gent", "Straat", "12", 9000);
+            //Event ev = new Event("Rock Werchter", new DateTime(26, 07, 14), 140.50, address);
+            //Member member = new Member("Lucas", "Email", EStatus.Gold, address1);
+            //List<string> benefits = new List<string>() { "nametag", "taxi", "dinner"};
             
 
-            StandardOrder order = new GoldOrder(ev, member, 5, new ExpressDelivery(), new GoldCalculator());
-            orders.Add(order);
+            //StandardOrder order = new GoldOrder(ev, member, 5, new ExpressDelivery(), new GoldCalculator());
+            //orders.Add(order);
 
-            benefits.Add(ev, orders);
+            //dictBenefits.Add(ev, orders);
 
-
-
-
-            var x = benefits.SelectMany(x => x.Value).Select(x => new
+            //TODO redirect to 'a that will project the string (example: stringname), ... in to the listbox.
+            var x = dictBenefits.SelectMany(x => x.Value).Select(x => new
             {
                 Eventname = x.Event.Name,
                 EventAdress = x.Event.Address,
                 MemberName = x.Member.Name,
                 MemberAdress = x.Member.Address,
-                Benefits = string.Join(',', x.Benefits)
+                Benefits = (x.Benefits == null)? null : string.Join(',', x.Benefits)             
             });
            
                 

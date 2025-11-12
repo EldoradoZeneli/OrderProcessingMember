@@ -37,7 +37,7 @@ namespace MainOrderProcessing
             if (RadioButton_Admin.IsChecked == true)
             {
                 //TODO add window admin with list of orders and their benefits
-                AdminWindow adminw = new AdminWindow();
+                AdminWindow adminw = new AdminWindow(_manager);
                 adminw.ShowDialog();
             }
             else
