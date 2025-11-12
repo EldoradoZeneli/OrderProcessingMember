@@ -103,8 +103,17 @@ namespace OrderProcessingMemberDL_File
             
             foreach(var x in orders)
             {
+                if (!data.ContainsKey(x.Event))
+                {
+                    data.Add(x.Event, new List<StandardOrder>() { x });
+                }
 
+                else
+                {
+                    data[x.Event].Add(x);
+                }
             }
+            return data;        
         }
     }
 }
