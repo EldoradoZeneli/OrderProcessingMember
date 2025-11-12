@@ -28,4 +28,9 @@ public class Event
         TicketPriceEur = ticketPriceEur;
         Address = address;
     }
+
+    public override string ToString()
+    {
+        return $"{Name} | {Date} | {TicketPriceEur} | {Address}";
+    }
 }
