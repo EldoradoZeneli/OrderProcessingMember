@@ -9,6 +9,6 @@ namespace OrderProcessingMembersBL.Interfaces
 {
     public interface IOrderManagerRepository
     {
-        public List<Lid> GeefLeden();
+        public List<Member> GeefLeden();
     }
 }

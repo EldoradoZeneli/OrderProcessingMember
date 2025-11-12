@@ -18,7 +18,7 @@ namespace OrderProcessingMembersBL.Manager
 
         // TODO |!| Group an order with a member
 
-        public List<Lid> GeefLeden()
+        public List<Member> GeefLeden()
         {
             return _repo.GeefLeden();
         }
