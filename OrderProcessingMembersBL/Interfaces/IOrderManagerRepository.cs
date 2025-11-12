@@ -1,4 +1,5 @@
 ﻿using OrderProcessingMembersBL.Models;
+using OrderProcessingMembersBL.Models.Status;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace OrderProcessingMembersBL.Interfaces
         public List<Member> GeefLeden();
         public Member GetMemberByEmail(string email);
         public List<Event> GetEventList();
+
+        public Dictionary<Event, List<StandardOrder>> GetOrdersByEvent();
     }
 }

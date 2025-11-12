@@ -8,6 +8,6 @@ namespace OrderProcessingMembersBL.Interfaces
 {
     public interface INameTag
     {
-        string Naamplaat(string naam);
+        string Naamplaat();
     }
 }

@@ -50,5 +50,11 @@ namespace OrderProcessingMembersBL.Manager
         {
             return _repo.GeefLeden();
         }
+
+        public Dictionary<Event, List<StandardOrder>> GetOrdersByEvent()
+        {
+
+            return _repo.GetOrdersByEvent();
+        }
     }
 }

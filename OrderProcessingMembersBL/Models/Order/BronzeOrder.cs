@@ -17,9 +17,14 @@ namespace OrderProcessingMembersBL.Models.Status
         {
         }
 
-        public string Naamplaat(string naam)
+        public string Naamplaat()
         {
-            return $"Naamplaat: {naam}";
+            return $"Naamplaat";
+        }
+
+        public override string ToString()
+        {
+            return $"{Member.Name} {Naamplaat()}";
         }
     }
 }

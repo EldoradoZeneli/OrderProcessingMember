@@ -23,14 +23,19 @@ namespace OrderProcessingMembersBL.Models.Status
             return "avondmaal";
         }
 
-        public string Naamplaat(string naam)
+        public string Naamplaat()
         {
-            return $"Naamplaat: {naam}";
+            return $"Naamplaat";
         }
 
         public string Welkomstpakket()
         {
             return "Welkomstpakket";
+        }
+
+        public override string ToString()
+        {
+            return $"{Member.Name} {Avondmaal()}, {Naamplaat()}, {Welkomstpakket()}";
         }
     }
 }

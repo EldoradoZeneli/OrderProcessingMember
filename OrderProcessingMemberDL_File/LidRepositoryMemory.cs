@@ -1,5 +1,6 @@
 ﻿using OrderProcessingMembersBL.Enums;
 using OrderProcessingMembersBL.Interfaces;
+using OrderProcessingMembersBL.Manager;
 using OrderProcessingMembersBL.Models;
 using OrderProcessingMembersBL.Models.Status;
 using System.Net;
@@ -13,6 +14,8 @@ namespace OrderProcessingMemberDL_File
 
         private Dictionary<string, Member> leden;
         private Dictionary<int, Event> events;
+        private OrderProcessingMembersBeheerder beheerder;
+        private List<StandardOrder> orders;
         // string = key email voor methode memberbyemail
 
         public LidRepositoryMemory()
@@ -56,7 +59,18 @@ namespace OrderProcessingMemberDL_File
             events.Add(eventId, event5);
             event5.Id = eventId;
             eventId++;
-            
+
+            StandardOrder o1 = beheerder.GetOrder(member, event1, 1);
+            StandardOrder o2 = beheerder.GetOrder(member2, event1, 1);
+            StandardOrder o3 = beheerder.GetOrder(member3, event1, 1);
+            StandardOrder o4 = beheerder.GetOrder(member4, event2, 1);
+            StandardOrder o5 = beheerder.GetOrder(member5, event2, 1);
+
+            orders.Add(o1);
+            orders.Add(o2);
+            orders.Add(o3);
+            orders.Add(o4);
+            orders.Add(o5);
 
         }
 
@@ -81,6 +95,16 @@ namespace OrderProcessingMemberDL_File
                 throw new Exception();
             }
             
+        }
+
+        public Dictionary<Event, List<StandardOrder>> GetOrdersByEvent()
+        {
+            Dictionary<Event, List<StandardOrder>> data = new();
+            
+            foreach(var x in orders)
+            {
+
+            }
         }
     }
 }

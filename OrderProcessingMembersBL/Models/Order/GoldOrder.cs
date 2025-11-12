@@ -13,6 +13,7 @@ namespace OrderProcessingMembersBL.Models.Status
     // IStatus is used to group every type of status, the Interface itself doesn't contain any logic
     public class GoldOrder: StandardOrder, INameTag, IWelcomingPackage, IDinner, ITaxi
     {
+        
         public GoldOrder(Event @event, Member member, int nrOfTickets, IDelivery delivery, IPriceCalculator calculator)
             : base(@event, member, nrOfTickets, delivery, calculator)
         {
@@ -20,22 +21,27 @@ namespace OrderProcessingMembersBL.Models.Status
 
         public string Afhaalservice()
         {
-            throw new NotImplementedException();
+            return $"FROM: {Member.Address.ToString()} TO: {Event.Address.ToString()}";
         }
 
         public string Avondmaal()
         {
-            throw new NotImplementedException();
+            return "Avondmaal";
         }
 
-        public string Naamplaat(string naam)
+        public string Naamplaat()
         {
-            throw new NotImplementedException();
+            return "Naamplaat";
         }
-
         public string Welkomstpakket()
         {
-            throw new NotImplementedException();
+            return "Welkomstpakket";
         }
+
+        public override string ToString()
+        {
+            return $"{Member.Name} {Avondmaal()}, {Naamplaat()}, {Welkomstpakket()}, FROM: {Member.Address.ToString()} TO: {Event.Address.ToString()}";
+        }
+
     }
 }
