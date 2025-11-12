@@ -44,9 +44,17 @@ namespace OrderProcessingMembersUI_2
             try
             {
                 int amountOfticks = int.Parse(TextBox_TicketAmount.Text);
-               _manager.GetOrder(_member, ev, amountOfticks);
+                var returnedOrder = _manager.GetOrder(_member, ev, amountOfticks);
+
+
+                // TODO < |EDIT, LC|
+                // MessageBox window to show the user that his order has been succesfully made
+                if (returnedOrder != null)
+                    MessageBox.Show("Your order has been created!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+
+
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

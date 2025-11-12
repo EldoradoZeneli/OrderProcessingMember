@@ -30,7 +30,20 @@ namespace MainOrderProcessing
         private void Click_LoginMember(object sender, RoutedEventArgs e)
         {
             string email = TextBox_Email.Text;
+
+
             Member memberLo = _manager.GetMemberByEmail(email);
+
+
+            // TODO < |EDIT, LC|
+            // When an invalid email has been entered, do nothing
+            // The null value is being passed through the else section from the GetMemberByEmail method in the LidRepositoryMemory.cs file
+
+            if (memberLo == null)
+            {
+                return;
+            }
+
 
             EventOrderWindow w = new EventOrderWindow(memberLo, _manager);
 

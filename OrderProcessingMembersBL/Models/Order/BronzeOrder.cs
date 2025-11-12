@@ -26,5 +26,6 @@ namespace OrderProcessingMembersBL.Models.Status
         {
             return $"{Member.Name} {Naamplaat()}";
         }
+
     }
 }

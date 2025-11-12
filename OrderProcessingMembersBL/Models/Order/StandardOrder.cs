@@ -35,6 +35,8 @@ namespace OrderProcessingMembersBL.Models.Status
         {
             //TODO: Methode om benefits in te vullen
            //Moet ook geïmplemmenteerd worden in Bronze/Silver/GoldOrder
+           
+            
         }
     }
 }

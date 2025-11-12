@@ -22,7 +22,6 @@ namespace OrderProcessingMembersBL.Manager
             _repo = repo;
         }
 
-        // TODO |!| Group an order with a member
         public StandardOrder GetOrder(Member member, Event @event, int nrOfTickets)
         {
             StandardOrder order;
