@@ -14,7 +14,7 @@ namespace OrderProcessingMembersBL.Models.Status
     public class StandardOrder
     {
         private List<string> _benefits;
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public Event Event { get; set; }
         public Member Member { get; set; }
         public int NrOfTickets { get; set; }
