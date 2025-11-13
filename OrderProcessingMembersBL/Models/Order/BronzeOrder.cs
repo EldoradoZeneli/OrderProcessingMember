@@ -12,7 +12,7 @@ namespace OrderProcessingMembersBL.Models.Status
     // IStatus is used to group every type of status, the Interface itself doesn't contain any logic
     public class BronzeOrder : StandardOrder, INameTag
     {
-        public BronzeOrder(Event @event, Member member, int nrOfTickets, IDelivery delivery, IPriceCalculator calculator) 
+        public BronzeOrder(Event @event, Member member, int nrOfTickets, IDelivery delivery, IPriceCalculator calculator)
             : base(@event, member, nrOfTickets, delivery, calculator)
         {
         }
@@ -26,6 +26,7 @@ namespace OrderProcessingMembersBL.Models.Status
         {
             return $"{Member.Name} {Naamplaat()}";
         }
+
         public override void AddBenefitToList()
         {
             AddBenefit(Naamplaat());

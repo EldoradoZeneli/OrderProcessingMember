@@ -93,11 +93,19 @@ namespace OrderProcessingMemberDL_File
             {
                 return leden[email];
             }
-            else 
+            else
             {
-                throw new Exception();
+                // TODO < |EDIT, LC|
+                // Instead  of throwing an exception, we return a null value
+                // This way when a user tries to login with the wrong e-mail, the whole WPF app doesn't crash, it just does nothing
+                // You can check how this null value is handeled, in the Click_LoginMember method in the MainWindow.xaml.cs file
+
+                return null;
+
+                # region Deprecated
+                //throw new Exception();
+                #endregion
             }
-            
         }
 
         public Dictionary<Event, List<StandardOrder>> GetOrdersByEvent()

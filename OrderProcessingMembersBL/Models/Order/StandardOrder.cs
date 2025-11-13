@@ -37,8 +37,7 @@ namespace OrderProcessingMembersBL.Models.Status
         public virtual void AddBenefitToList()
         {
             //TODO: Methode om benefits in te vullen
-            //Moet ook geïmplemmenteerd worden in Bronze/Silver/GoldOrder
-            AddBenefit("No Extra Benefits");
+
         }
     }
 }
