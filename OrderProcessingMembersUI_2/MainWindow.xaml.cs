@@ -30,9 +30,12 @@ namespace MainOrderProcessing
         private void Click_LoginMember(object sender, RoutedEventArgs e)
         {
             string email = TextBox_Email.Text;
-
-
+           
             Member memberLo = _manager.GetMemberByEmail(email);
+            if (memberLo == null)
+            {
+                MessageBox.Show("Login Not Found", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
 
             EventOrderWindow w = new EventOrderWindow(memberLo, _manager);
 

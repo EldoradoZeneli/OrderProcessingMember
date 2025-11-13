@@ -13,7 +13,6 @@ namespace OrderProcessingMemberDL_File
 {
     public class LidRepositoryMemory : IOrderManagerRepository
     {
-
         private Dictionary<string, Member> _leden;
         private Dictionary<int, Event> _events;
         private List<StandardOrder> _orders;
