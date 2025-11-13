@@ -44,7 +44,7 @@ namespace OrderProcessingMembersUI_2
             try
             {
                 int amountOfticks = int.Parse(TextBox_TicketAmount.Text);
-                var returnedOrder = _manager.GetOrder(_member, ev, amountOfticks);
+                StandardOrder returnedOrder = _manager.GetOrder(_member, ev, amountOfticks);
 
                 // TODO < |EDIT, LC|
                 // Checking if the returnedOrder is null

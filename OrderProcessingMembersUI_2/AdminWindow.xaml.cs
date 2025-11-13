@@ -27,7 +27,7 @@ namespace OrderProcessingMembersUI_2
     {
 
         private OrderProcessingMembersBeheerder _manager;
-        Dictionary<Event, List<StandardOrder>> dictBenefits;
+        List<StandardOrder> dictBenefits;
         // List<StandardOrder> orders = new List<StandardOrder>();
 
         public AdminWindow(OrderProcessingMembersBeheerder manager)
@@ -35,39 +35,40 @@ namespace OrderProcessingMembersUI_2
             InitializeComponent();
 
             _manager = manager;
-            dictBenefits = new Dictionary<Event, List<StandardOrder>>(manager.GetOrdersByEvent());
+            dictBenefits = new List<StandardOrder>(manager.GetOrders());
+
+            
 
 
-            //Address address = new Address("Werchter", "Straat", "25", 2000);
-            //Address address1 = new Address("Gent", "Straat", "12", 9000);
-            //Event ev = new Event("Rock Werchter", new DateTime(26, 07, 14), 140.50, address);
-            //Member member = new Member("Lucas", "Email", EStatus.Gold, address1);
-            //List<string> benefits = new List<string>() { "nametag", "taxi", "dinner"};
+            //business logica moet niet hier toegepast worden!           
+            //foreach (var orderList in dictBenefits)
+            //{
+            //    foreach (var order in orderList)
+            //    {
+            //        order.AddBenefitToList(); 
+            //    }
+            //}
 
 
-            //StandardOrder order = new GoldOrder(ev, member, 5, new ExpressDelivery(), new GoldCalculator());
-            //orders.Add(order);
-
-            //dictBenefits.Add(ev, orders);
-
-            //TODO redirect to 'a that will project the string (example: stringname), ... in to the listbox.
-            foreach (var orderList in dictBenefits.Values)
+            var x = dictBenefits.Select(order => new
             {
-                foreach (var order in orderList)
-                {
-                    order.AddBenefitToList(); 
-                }
-            }
+                Eventname = order.Event.Name,
+                EventAdress = order.Event.Address,
+                MemberName = order.Member.Name,
+                MemberAdress = order.Member.Address,
+                Benefits = (order.Benefits == null) ? null : string.Join(", ", order.Benefits)
 
+            })
+                .Where(x => x.Benefits != null);
 
-            var x = dictBenefits.SelectMany(x => x.Value).Select(x => new
-            {
-                Eventname = x.Event.Name,
-                EventAdress = x.Event.Address,
-                MemberName = x.Member.Name,
-                MemberAdress = x.Member.Address,
-                Benefits = (x.Benefits == null)? null : string.Join(", ", x.Benefits)             
-            });
+            //var x = dictBenefits.SelectMany(x => x.Value).Select(x => new
+            //{
+            //    Eventname = x.Event.Name,
+            //    EventAdress = x.Event.Address,
+            //    MemberName = x.Member.Name,
+            //    MemberAdress = x.Member.Address,
+            //    Benefits = (x.Benefits == null)? null : string.Join(", ", x.Benefits[0])             
+            //});
            
                 
             

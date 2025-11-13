@@ -15,6 +15,7 @@ namespace OrderProcessingMembersBL.Models.Status
         public SilverOrder(Event @event, Member member, int nrOfTickets, IDelivery delivery, IPriceCalculator calculator)
             : base(@event, member, nrOfTickets, delivery, calculator)
         {
+           
 
         }
 

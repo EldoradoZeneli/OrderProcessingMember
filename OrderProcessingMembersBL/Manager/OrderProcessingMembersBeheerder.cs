@@ -50,10 +50,10 @@ namespace OrderProcessingMembersBL.Manager
             return _repo.GeefLeden();
         }
 
-        public Dictionary<Event, List<StandardOrder>> GetOrdersByEvent()
+        public List<StandardOrder> GetOrders()
         {
 
-            return _repo.GetOrdersByEvent();
+            return _repo.GetOrders();
         }
 
         // TODO < [EDIT, LC]

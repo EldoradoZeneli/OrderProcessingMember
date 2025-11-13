@@ -29,6 +29,8 @@ namespace OrderProcessingMembersBL.Models.Status
             NrOfTickets = nrOfTickets;
             Delivery = delivery;
             Calculator = calculator;
+
+            AddBenefitToList();
         }
         protected void AddBenefit(string benefit)
         {
@@ -36,8 +38,7 @@ namespace OrderProcessingMembersBL.Models.Status
         }
         public virtual void AddBenefitToList()
         {
-            //TODO: Methode om benefits in te vullen
-
+           
         }
     }
 }

@@ -14,7 +14,7 @@ namespace OrderProcessingMembersBL.Interfaces
         public Member GetMemberByEmail(string email);
         public List<Event> GetEventList();
 
-        public Dictionary<Event, List<StandardOrder>> GetOrdersByEvent();
+        public List<StandardOrder> GetOrders();
         void AddCurrentOrderToOrderList(StandardOrder returnedOrder);
     }
 }

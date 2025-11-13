@@ -25,15 +25,21 @@ namespace OrderProcessingMemberDL_File
         // value:
         //      -> StandardOrder object OR a class that inherits from StandardOrder
         // YOU CAN'T USE THE ID AS THE KEY SINCE THIS VALUE IS NULLABLE!
-        private Dictionary<(Event eventName, Member memberName), StandardOrder> _createdOrders = new(); 
+
+        //TODO is a list not an option? List<Member, List<Order>> _createdOrders 
+        // this way are the orders for each member saved
+        //private Dictionary<(Event eventName, Member memberName), StandardOrder> _createdOrders = new(); 
+        private List<StandardOrder> _createdOrders;
+
 
         public LidRepositoryMemory()
         {
+            _createdOrders = new List<StandardOrder>();
 
             _leden = new();
             _events = new Dictionary<int, Event>();
             _orders = new();
-            //_createdOrders = new();
+            
             int eventId = 1;
             Address fakeadress = new Address("x", "x", "x", 1);
 
@@ -71,17 +77,17 @@ namespace OrderProcessingMemberDL_File
             event5.Id = eventId;
             eventId++;
 
-            GoldOrder o1 = new(event1, member, 1, new ExpressDelivery(), new GoldCalculator());
-            GoldOrder o2 = new(event1, member2, 1, new ExpressDelivery(), new GoldCalculator());
-            SilverOrder o3 = new(event1, member3, 1, new ExpressDelivery(), new SilverCalculator());
-            BronzeOrder o4 = new(event2, member4, 1, new StandardDelivery(), new BronzeCalculator());
-            StandardOrder o5 = new(event2, member5, 1, new StandardDelivery(), new StandardCalculator());
+            //GoldOrder o1 = new(event1, member, 1, new ExpressDelivery(), new GoldCalculator());
+            //GoldOrder o2 = new(event1, member2, 1, new ExpressDelivery(), new GoldCalculator());
+            //SilverOrder o3 = new(event1, member3, 1, new ExpressDelivery(), new SilverCalculator());
+            //BronzeOrder o4 = new(event2, member4, 1, new StandardDelivery(), new BronzeCalculator());
+            //StandardOrder o5 = new(event2, member5, 1, new StandardDelivery(), new StandardCalculator());
 
-            _orders.Add(o1);
-            _orders.Add(o2);
-            _orders.Add(o3);
-            _orders.Add(o4);
-            _orders.Add(o5);
+            //_orders.Add(o1);
+            //_orders.Add(o2);
+            //_orders.Add(o3);
+            //_orders.Add(o4);
+            //_orders.Add(o5);
 
         }
 
@@ -117,7 +123,7 @@ namespace OrderProcessingMemberDL_File
             }
         }
 
-        public Dictionary<Event, List<StandardOrder>> GetOrdersByEvent()
+        public List<StandardOrder> GetOrders()
         {
 
             #region [DEPRECATED] HARD CODED DATA
@@ -135,26 +141,28 @@ namespace OrderProcessingMemberDL_File
             //        data[x.Event].Add(x);
             //    }
             //}
-            //return data;        
+            //return data;
+            //
+
+            //foreach (var x in _createdOrders)
+            //{
+            //    if (!data.ContainsKey(x.Value.Event))
+            //    {
+            //        data.Add(x.Value.Event, new List<StandardOrder> { x.Value });
+            //    }
+
+            //    else
+            //    {
+            //        data[x.Value.Event].Add(x.Value);
+            //    }
+            //}
+            //return data;
             #endregion
 
             // TODO < [EDIT, LC]
-            // Returning orders by events, this uses the orders created by the user
-            Dictionary<Event, List<StandardOrder>> data = new();
 
-            foreach (var x in _createdOrders)
-            {
-                if (!data.ContainsKey(x.Value.Event))
-                {
-                    data.Add(x.Value.Event, new List<StandardOrder> { x.Value });
-                }
+            return _createdOrders;
 
-                else
-                {
-                    data[x.Value.Event].Add(x.Value);
-                }
-            }
-            return data;
         }
 
 
@@ -162,7 +170,8 @@ namespace OrderProcessingMemberDL_File
         // Method that adds all the created orders in a list
         public void AddCurrentOrderToOrderList(StandardOrder returnedOrder)
         {
-            _createdOrders.Add((returnedOrder.Event, returnedOrder.Member), returnedOrder);
+
+            _createdOrders.Add(returnedOrder);
         }
 
     }
