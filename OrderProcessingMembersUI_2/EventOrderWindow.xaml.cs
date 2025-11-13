@@ -46,12 +46,18 @@ namespace OrderProcessingMembersUI_2
                 int amountOfticks = int.Parse(TextBox_TicketAmount.Text);
                 var returnedOrder = _manager.GetOrder(_member, ev, amountOfticks);
 
-
                 // TODO < |EDIT, LC|
-                // MessageBox window to show the user that his order has been succesfully made
+                // Checking if the returnedOrder is null
+                // IF NOT -> Create a new order
+                // IF IT IS NULL -> Do nothing
                 if (returnedOrder != null)
+                {
+                     // TODO < |EDIT, LC|
+                    // Calling the AddCurrentOrderToOrderList method from the manager
+                    _manager.AddCurrentOrderToOrderList(returnedOrder);
+                    // MessageBox window to show the user that his order has been succesfully made
                     MessageBox.Show("Your order has been created!", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-
+                }
 
             }
             catch (Exception ex)

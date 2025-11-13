@@ -14,18 +14,27 @@ namespace OrderProcessingMemberDL_File
     public class LidRepositoryMemory : IOrderManagerRepository
     {
 
-        private Dictionary<string, Member> leden;
-        private Dictionary<int, Event> events;
-        
-        private List<StandardOrder> orders;
+        private Dictionary<string, Member> _leden;
+        private Dictionary<int, Event> _events;
+        private List<StandardOrder> _orders;
         // string = key email voor methode memberbyemail
+
+        // TODO <- [EDIT, LC]
+        // Created a Dictionary for all the orders that are being added
+        // key:
+        //      -> eventName AND memberName of the Order,
+        // value:
+        //      -> StandardOrder object OR a class that inherits from StandardOrder
+        // YOU CAN'T USE THE ID AS THE KEY SINCE THIS VALUE IS NULLABLE!
+        private Dictionary<(Event eventName, Member memberName), StandardOrder> _createdOrders = new(); 
 
         public LidRepositoryMemory()
         {
 
-            leden = new();
-            events = new Dictionary<int, Event>();
-            orders = new();
+            _leden = new();
+            _events = new Dictionary<int, Event>();
+            _orders = new();
+            //_createdOrders = new();
             int eventId = 1;
             Address fakeadress = new Address("x", "x", "x", 1);
 
@@ -35,11 +44,11 @@ namespace OrderProcessingMemberDL_File
             Member member4 = new Member("Kelly", "Kelly@school.be", EStatus.Bronze, fakeadress);
             Member member5 = new Member("x", "x@school.be", EStatus.Standard, fakeadress);
 
-            leden.Add(member.Email, member);
-            leden.Add(member2.Email, member2);
-            leden.Add(member3.Email, member3);
-            leden.Add(member4.Email, member4);
-            leden.Add(member5.Email, member5);
+            _leden.Add(member.Email, member);
+            _leden.Add(member2.Email, member2);
+            _leden.Add(member3.Email, member3);
+            _leden.Add(member4.Email, member4);
+            _leden.Add(member5.Email, member5);
 
             Event event1 = new Event("josfest", DateTime.Now, 20.22, fakeadress);
             Event event2 = new Event("bickyavond", DateTime.Now, 29.22, fakeadress);
@@ -47,19 +56,19 @@ namespace OrderProcessingMemberDL_File
             Event event4 = new Event("dalamudfall", DateTime.Now, 20.22, fakeadress);
             Event event5 = new Event("murdercon", DateTime.Now, 45.22, fakeadress);
 
-            events.Add(eventId, event1);
+            _events.Add(eventId, event1);
             event1.Id = eventId;
             eventId++;
-            events.Add(eventId, event2);
+            _events.Add(eventId, event2);
             event2.Id = eventId;
             eventId++;
-            events.Add(eventId, event3);
+            _events.Add(eventId, event3);
             event3.Id = eventId;
             eventId++;
-            events.Add(eventId, event4);
+            _events.Add(eventId, event4);
             event4.Id = eventId;
             eventId++;
-            events.Add(eventId, event5);
+            _events.Add(eventId, event5);
             event5.Id = eventId;
             eventId++;
 
@@ -69,29 +78,30 @@ namespace OrderProcessingMemberDL_File
             BronzeOrder o4 = new(event2, member4, 1, new StandardDelivery(), new BronzeCalculator());
             StandardOrder o5 = new(event2, member5, 1, new StandardDelivery(), new StandardCalculator());
 
-            orders.Add(o1);
-            orders.Add(o2);
-            orders.Add(o3);
-            orders.Add(o4);
-            orders.Add(o5);
+            _orders.Add(o1);
+            _orders.Add(o2);
+            _orders.Add(o3);
+            _orders.Add(o4);
+            _orders.Add(o5);
 
         }
 
         public List<Member> GeefLeden()
         {
-            return leden.Values.ToList();
+            return _leden.Values.ToList();
         }
+
 
         public List<Event> GetEventList()
         {
-           return events.Values.ToList();
+            return _events.Values.ToList();
         }
 
         public Member GetMemberByEmail(string email)
         {
-            if (leden.ContainsKey(email))
+            if (_leden.ContainsKey(email))
             {
-                return leden[email];
+                return _leden[email];
             }
             else
             {
@@ -110,21 +120,51 @@ namespace OrderProcessingMemberDL_File
 
         public Dictionary<Event, List<StandardOrder>> GetOrdersByEvent()
         {
+
+            #region [DEPRECATED] HARD CODED DATA
+            //Dictionary<Event, List<StandardOrder>> data = new();
+
+            //foreach(var x in _orders)
+            //{
+            //    if (!data.ContainsKey(x.Event))
+            //    {
+            //        data.Add(x.Event, new List<StandardOrder>() { x });
+            //    }
+
+            //    else
+            //    {
+            //        data[x.Event].Add(x);
+            //    }
+            //}
+            //return data;        
+            #endregion
+
+            // TODO < [EDIT, LC]
+            // Returning orders by events, this uses the orders created by the user
             Dictionary<Event, List<StandardOrder>> data = new();
-            
-            foreach(var x in orders)
+
+            foreach (var x in _createdOrders)
             {
-                if (!data.ContainsKey(x.Event))
+                if (!data.ContainsKey(x.Value.Event))
                 {
-                    data.Add(x.Event, new List<StandardOrder>() { x });
+                    data.Add(x.Value.Event, new List<StandardOrder> { x.Value });
                 }
 
                 else
                 {
-                    data[x.Event].Add(x);
+                    data[x.Value.Event].Add(x.Value);
                 }
             }
-            return data;        
+            return data;
         }
+
+
+        // TODO < [EDIT, LC]
+        // Method that adds all the created orders in a list
+        public void AddCurrentOrderToOrderList(StandardOrder returnedOrder)
+        {
+            _createdOrders.Add((returnedOrder.Event, returnedOrder.Member), returnedOrder);
+        }
+
     }
 }

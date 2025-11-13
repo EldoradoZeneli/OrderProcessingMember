@@ -22,14 +22,14 @@ namespace OrderProcessingMembersBL.Models.Status
             return $"Naamplaat";
         }
 
-        public override string ToString()
-        {
-            return $"{Member.Name} {Naamplaat()}";
-        }
-
         public override void AddBenefitToList()
         {
             AddBenefit(Naamplaat());
+        }
+
+        public override string ToString()
+        {
+            return $"{Member.Name} {Naamplaat()}";
         }
     }
 }

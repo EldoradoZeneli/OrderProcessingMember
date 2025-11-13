@@ -15,5 +15,6 @@ namespace OrderProcessingMembersBL.Interfaces
         public List<Event> GetEventList();
 
         public Dictionary<Event, List<StandardOrder>> GetOrdersByEvent();
+        void AddCurrentOrderToOrderList(StandardOrder returnedOrder);
     }
 }

@@ -34,18 +34,17 @@ namespace MainOrderProcessing
 
             Member memberLo = _manager.GetMemberByEmail(email);
 
+            EventOrderWindow w = new EventOrderWindow(memberLo, _manager);
+
 
             // TODO < |EDIT, LC|
             // When an invalid email has been entered, do nothing
             // The null value is being passed through the else section from the GetMemberByEmail method in the LidRepositoryMemory.cs file
-
             if (memberLo == null)
             {
                 return;
             }
 
-
-            EventOrderWindow w = new EventOrderWindow(memberLo, _manager);
 
             if (RadioButton_Admin.IsChecked == true)
             {
@@ -57,7 +56,7 @@ namespace MainOrderProcessing
             {
                 w.ShowDialog();
             }
-          
+
 
         }
     }

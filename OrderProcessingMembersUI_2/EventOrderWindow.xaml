@@ -20,7 +20,10 @@
 
         <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" Text="Event options: "></TextBlock>
         <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" Name="ComboBox_EventList" ></ComboBox>
-        <TextBox Grid.Row="0" Grid.Column="2" Text="Enter amount of tickets" Name="TextBox_TicketAmount" Margin="5"></TextBox>
+        
+        <!-- TODO < [EDIT, LC] -->
+        <!-- Fixed Width on the Textbox so it doesn't move when the Text is removed -->
+        <TextBox Grid.Row="0" Grid.Column="2" Text="Enter amount of tickets" Name="TextBox_TicketAmount" Margin="5" Width="160"></TextBox>
         <Button Grid.Row="1" Grid.ColumnSpan="3" Content="Order" Margin="5" Click="ButtonClick_Order"/>
  
     </Grid>

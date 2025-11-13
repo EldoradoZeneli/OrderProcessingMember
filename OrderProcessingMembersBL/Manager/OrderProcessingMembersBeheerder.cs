@@ -56,6 +56,11 @@ namespace OrderProcessingMembersBL.Manager
             return _repo.GetOrdersByEvent();
         }
 
-       
+        // TODO < [EDIT, LC]
+        // Asking to repo to add the current order to the current order list
+        public void AddCurrentOrderToOrderList(StandardOrder returnedOrder)
+        {
+            _repo.AddCurrentOrderToOrderList(returnedOrder);
+        }
     }
 }
