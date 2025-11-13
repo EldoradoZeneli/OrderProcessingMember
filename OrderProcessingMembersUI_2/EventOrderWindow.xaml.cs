@@ -66,5 +66,23 @@ namespace OrderProcessingMembersUI_2
             }
 
         }
+
+        private void TextBox_TicketAmount_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (TextBox_TicketAmount.Text == "Enter amount of tickets")
+            {
+                TextBox_TicketAmount.Text = "";
+                TextBox_TicketAmount.Foreground = Brushes.Black;
+            }
+        }
+
+        private void TextBox_TicketAmount_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(TextBox_TicketAmount.Text))
+            {
+                TextBox_TicketAmount.Text = "Enter amount of tickets";
+                TextBox_TicketAmount.Foreground = Brushes.Gray;
+            }
+        }
     }
 }

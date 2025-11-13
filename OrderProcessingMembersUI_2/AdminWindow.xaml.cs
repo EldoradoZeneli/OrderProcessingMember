@@ -35,13 +35,13 @@ namespace OrderProcessingMembersUI_2
             listAdmin = new List<StandardOrder>(manager.GetOrders());
 
 
-
             var x = listAdmin.Select(order => new
             {
                 Eventname = order.Event.Name,
                 EventAdress = order.Event.Address,
                 MemberName = order.Member.Name,
                 MemberAdress = order.Member.Address,
+                Amount = order.NrOfTickets,
                 Benefits = (order.Benefits == null) ? null : string.Join(", ", order.Benefits)
 
             })
