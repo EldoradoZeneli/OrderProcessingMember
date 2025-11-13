@@ -31,9 +31,9 @@ namespace OrderProcessingMemberDL_File
 
             Member member = new Member("Lucas", "lucas@school.be", EStatus.Gold, fakeadress);
             Member member2 = new Member("Eldorado", "eldorado@school.be", EStatus.Gold, fakeadress);
-            Member member3 = new Member("Qwertygebruiker", "qwerty@school.be", EStatus.Gold, fakeadress);
-            Member member4 = new Member("Kelly", "Kelly@school.be", EStatus.Gold, fakeadress);
-            Member member5 = new Member("x", "x@school.be", EStatus.Gold, fakeadress);
+            Member member3 = new Member("Qwertygebruiker", "qwerty@school.be", EStatus.Silver, fakeadress);
+            Member member4 = new Member("Kelly", "Kelly@school.be", EStatus.Bronze, fakeadress);
+            Member member5 = new Member("x", "x@school.be", EStatus.Standard, fakeadress);
 
             leden.Add(member.Email, member);
             leden.Add(member2.Email, member2);
@@ -65,9 +65,9 @@ namespace OrderProcessingMemberDL_File
 
             GoldOrder o1 = new(event1, member, 1, new ExpressDelivery(), new GoldCalculator());
             GoldOrder o2 = new(event1, member2, 1, new ExpressDelivery(), new GoldCalculator());
-            GoldOrder o3 = new(event1, member3, 1, new ExpressDelivery(), new GoldCalculator());
-            GoldOrder o4 = new(event2, member4, 1, new ExpressDelivery(), new GoldCalculator());
-            GoldOrder o5 = new(event2, member5, 1, new ExpressDelivery(), new GoldCalculator());
+            SilverOrder o3 = new(event1, member3, 1, new ExpressDelivery(), new SilverCalculator());
+            BronzeOrder o4 = new(event2, member4, 1, new StandardDelivery(), new BronzeCalculator());
+            StandardOrder o5 = new(event2, member5, 1, new StandardDelivery(), new StandardCalculator());
 
             orders.Add(o1);
             orders.Add(o2);
