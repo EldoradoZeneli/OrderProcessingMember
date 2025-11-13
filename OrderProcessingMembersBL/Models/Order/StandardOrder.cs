@@ -13,7 +13,7 @@ namespace OrderProcessingMembersBL.Models.Status
     
     public class StandardOrder
     {
-        private List<string> _benefits;
+        private List<string> _benefits = new();
         public int? Id { get; set; }
         public Event Event { get; set; }
         public Member Member { get; set; }
@@ -30,11 +30,15 @@ namespace OrderProcessingMembersBL.Models.Status
             Delivery = delivery;
             Calculator = calculator;
         }
-
+        protected void AddBenefit(string benefit)
+        {
+            _benefits.Add(benefit);
+        }
         public virtual void AddBenefitToList()
         {
             //TODO: Methode om benefits in te vullen
-           //Moet ook geïmplemmenteerd worden in Bronze/Silver/GoldOrder
+            //Moet ook geïmplemmenteerd worden in Bronze/Silver/GoldOrder
+            AddBenefit("No Extra Benefits");
         }
     }
 }

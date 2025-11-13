@@ -21,7 +21,7 @@ namespace OrderProcessingMembersBL.Models.Status
 
         public string Afhaalservice()
         {
-            return $"FROM: {Member.Address.ToString()} TO: {Event.Address.ToString()}";
+            return $"Pick-up Service FROM: {Member.Address.ToString()} TO: {Event.Address.ToString()}";
         }
 
         public string Avondmaal()
@@ -41,6 +41,14 @@ namespace OrderProcessingMembersBL.Models.Status
         public override string ToString()
         {
             return $"{Member.Name} {Avondmaal()}, {Naamplaat()}, {Welkomstpakket()}, FROM: {Member.Address.ToString()} TO: {Event.Address.ToString()}";
+        }
+
+        public override void AddBenefitToList()
+        {
+            AddBenefit(Naamplaat());
+            AddBenefit(Avondmaal());
+            AddBenefit(Welkomstpakket());
+            AddBenefit(Afhaalservice());
         }
 
     }

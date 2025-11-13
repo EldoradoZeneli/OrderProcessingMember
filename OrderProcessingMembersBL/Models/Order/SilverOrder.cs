@@ -37,5 +37,11 @@ namespace OrderProcessingMembersBL.Models.Status
         {
             return $"{Member.Name} {Avondmaal()}, {Naamplaat()}, {Welkomstpakket()}";
         }
+        public override void AddBenefitToList()
+        {
+            AddBenefit(Naamplaat());
+            AddBenefit(Avondmaal());
+            AddBenefit(Welkomstpakket());
+        }
     }
 }

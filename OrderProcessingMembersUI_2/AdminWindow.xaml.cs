@@ -43,7 +43,7 @@ namespace OrderProcessingMembersUI_2
             //Event ev = new Event("Rock Werchter", new DateTime(26, 07, 14), 140.50, address);
             //Member member = new Member("Lucas", "Email", EStatus.Gold, address1);
             //List<string> benefits = new List<string>() { "nametag", "taxi", "dinner"};
-            
+
 
             //StandardOrder order = new GoldOrder(ev, member, 5, new ExpressDelivery(), new GoldCalculator());
             //orders.Add(order);
@@ -51,13 +51,22 @@ namespace OrderProcessingMembersUI_2
             //dictBenefits.Add(ev, orders);
 
             //TODO redirect to 'a that will project the string (example: stringname), ... in to the listbox.
+            foreach (var orderList in dictBenefits.Values)
+            {
+                foreach (var order in orderList)
+                {
+                    order.AddBenefitToList(); 
+                }
+            }
+
+
             var x = dictBenefits.SelectMany(x => x.Value).Select(x => new
             {
                 Eventname = x.Event.Name,
                 EventAdress = x.Event.Address,
                 MemberName = x.Member.Name,
                 MemberAdress = x.Member.Address,
-                Benefits = (x.Benefits == null)? null : string.Join(',', x.Benefits)             
+                Benefits = (x.Benefits == null)? null : string.Join(", ", x.Benefits)             
             });
            
                 
