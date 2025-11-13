@@ -20,37 +20,23 @@ using OrderProcessingMembersBL.Models.Status;
 
 namespace OrderProcessingMembersUI_2
 {
-    /// <summary>
-    /// Interaction logic for AdminWindow.xaml
-    /// </summary>
+    
     public partial class AdminWindow : Window
     {
 
         private OrderProcessingMembersBeheerder _manager;
-        List<StandardOrder> dictBenefits;
-        // List<StandardOrder> orders = new List<StandardOrder>();
-
+        List<StandardOrder> listAdmin;
+      
         public AdminWindow(OrderProcessingMembersBeheerder manager)
         {
             InitializeComponent();
 
             _manager = manager;
-            dictBenefits = new List<StandardOrder>(manager.GetOrders());
-
-            
+            listAdmin = new List<StandardOrder>(manager.GetOrders());
 
 
-            //business logica moet niet hier toegepast worden!           
-            //foreach (var orderList in dictBenefits)
-            //{
-            //    foreach (var order in orderList)
-            //    {
-            //        order.AddBenefitToList(); 
-            //    }
-            //}
 
-
-            var x = dictBenefits.Select(order => new
+            var x = listAdmin.Select(order => new
             {
                 Eventname = order.Event.Name,
                 EventAdress = order.Event.Address,
@@ -61,17 +47,6 @@ namespace OrderProcessingMembersUI_2
             })
                 .Where(x => x.Benefits != null);
 
-            //var x = dictBenefits.SelectMany(x => x.Value).Select(x => new
-            //{
-            //    Eventname = x.Event.Name,
-            //    EventAdress = x.Event.Address,
-            //    MemberName = x.Member.Name,
-            //    MemberAdress = x.Member.Address,
-            //    Benefits = (x.Benefits == null)? null : string.Join(", ", x.Benefits[0])             
-            //});
-           
-                
-            
 
             DataGrid_Benefits.ItemsSource = x;
 
